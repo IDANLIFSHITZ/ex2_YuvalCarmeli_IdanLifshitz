@@ -1,8 +1,8 @@
-# Install script for directory: C:/Technion/mtm/hw2
+# Install script for directory: C:/Users/yuval/CLionProjects/ex2_YuvalCarmeli_IdanLifshitz
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/hw2")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/ex2_YuvalCarmeli_IdanLifshitz")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Technion/mtm/hw2/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/yuval/CLionProjects/ex2_YuvalCarmeli_IdanLifshitz/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

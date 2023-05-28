@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "hw2",
+					"name" : "ex2_YuvalCarmeli_IdanLifshitz",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "hw2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hw2-Debug-58b5b9f3ed044232fdd8.json",
-					"name" : "hw2",
+					"id" : "ex2_YuvalCarmeli_IdanLifshitz::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ex2_YuvalCarmeli_IdanLifshitz-Debug-f7b59645d72a640ae60b.json",
+					"name" : "ex2_YuvalCarmeli_IdanLifshitz",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Technion/mtm/hw2/cmake-build-debug",
-		"source" : "C:/Technion/mtm/hw2"
+		"build" : "C:/Users/yuval/CLionProjects/ex2_YuvalCarmeli_IdanLifshitz/cmake-build-debug",
+		"source" : "C:/Users/yuval/CLionProjects/ex2_YuvalCarmeli_IdanLifshitz"
 	},
 	"version" : 
 	{

@@ -1,13 +1,14 @@
 //
 // Created by yuval on 5/28/2023.
 //
+#include <cassert>
 #include "Player.h"
 #include "utilities.h"
 
 //c'tor with name, maxHP and strength
-Player::Player(const char* name, int maxHP = 100, int strength = 5) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
-                                                                    m_strength(strength), m_coins(0), m_name(name),
-                                                                    m_isAlive(true) {
+Player::Player(const char* name, int maxHP, int strength) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
+                                                                    m_strength(strength), m_coins(0), m_name(name)
+                                                                    {
     if (maxHP <= 0 || strength < 0) {
         m_currentHP = 100;
         m_maxHP = 100;
@@ -16,7 +17,7 @@ Player::Player(const char* name, int maxHP = 100, int strength = 5) : m_level(1)
 }
 
 void Player::printInfo() const {
-    utilities::printPlayerInfo(m_name, m_level, m_maxHP, m_currentHP, m_strength, m_coins);
+    printPlayerInfo(m_name, m_level, m_currentHP, m_strength, m_coins);
 }
 
 void Player::levelUp() {
@@ -26,7 +27,7 @@ void Player::levelUp() {
     m_level++;
 }
 
-void Player::getLevel() const {
+int Player::getLevel() const {
     return m_level;
 }
 
@@ -43,10 +44,11 @@ void Player::heal(int amount) {
     if(amount < 0){
         return;
     }
-    if (m_currentHP + amount > m_maxHP) {
+    if (m_currentHP + amount >= m_maxHP) {
         m_currentHP = m_maxHP;
         return;
     }
+    m_currentHP += amount;
 }
 
 void Player::damage(int amount) {
@@ -56,7 +58,6 @@ void Player::damage(int amount) {
     }
     if (m_currentHP - amount <= 0) {
         m_currentHP = 0;
-        m_isAlive = false;
         return;
     }
     m_currentHP -= amount;
