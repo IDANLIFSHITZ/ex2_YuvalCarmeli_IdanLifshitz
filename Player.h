@@ -14,7 +14,7 @@ private:
     int m_currentHP;
     int m_strength;
     int m_coins;
-    std::string m_name;
+    char* m_name;
 public:
 
     //c'tors- default c'tor, c'tor with name, maxHP and strength
