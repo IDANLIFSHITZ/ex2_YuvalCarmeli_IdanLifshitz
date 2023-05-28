@@ -22,7 +22,7 @@ Mtmchkin::Mtmchkin(const Mtmchkin& other): m_player(other.m_player), m_numOfCard
     }
 }
 
-Mtmchkin::operator=(const Mtmchkin& other) {
+Mtmchkin& Mtmchkin::operator=(const Mtmchkin& other) {
     if (this == &other) {
         return *this;
     }
