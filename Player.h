@@ -35,7 +35,7 @@ public:
     void damage(int amount);
     bool isKnockedOut() const;
     void addCoins(int amount);
-    void pay(int amount);
+    bool pay(int amount);
     int getAttackStrength() const;
 };
 
