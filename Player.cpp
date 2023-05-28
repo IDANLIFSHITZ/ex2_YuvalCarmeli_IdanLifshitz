@@ -44,10 +44,11 @@ void Player::heal(int amount) {
     if(amount < 0){
         return;
     }
-    if (m_currentHP + amount > m_maxHP) {
+    if (m_currentHP + amount >= m_maxHP) {
         m_currentHP = m_maxHP;
         return;
     }
+    m_currentHP += amount;
 }
 
 void Player::damage(int amount) {
