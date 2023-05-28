@@ -5,7 +5,7 @@
 #include "utilities.h"
 
 //c'tor with name, maxHP and strength
-Player::Player(const std::string& name, int maxHP = 100, int strength = 5) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
+Player::Player(const char* name, int maxHP = 100, int strength = 5) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
                                                                     m_strength(strength), m_coins(0), m_name(name),
                                                                     m_isAlive(true) {
     if (maxHP <= 0 || strength < 0) {

@@ -18,7 +18,7 @@ private:
 public:
 
     //c'tors- default c'tor, c'tor with name, maxHP and strength
-    Player(const std::string& name, int maxHP, int strength);
+    Player(const char* name, int maxHP, int strength);
     Player() = default;
 
     //the big three- default copy c'tor, default assignment operator, default d'tor
@@ -35,7 +35,7 @@ public:
     void damage(int amount);
     bool isKnockedOut() const;
     void addCoins(int amount);
-    void pay(int amount);
+    bool pay(int amount);
     int getAttackStrength() const;
 };
 

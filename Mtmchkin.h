@@ -1,6 +1,7 @@
     #ifndef EX2_GAME_H
 #define EX2_GAME_H
 #include "Card.h"
+#include "Player.h"
 #include <iostream>
 
 /*
@@ -53,11 +54,18 @@ public:
      */
     GameStatus getGameStatus() const;
 
-    //TODO: complete the Mtmchkin class.
+
+
+    Mtmchkin(const Mtmchkin& other);
+    Mtmchkin& operator=(const Mtmchkin& other);
+    ~Mtmchkin();
 
 private:
-    //TODO: complete the Mtmchkin class.
-
+    Player m_player;
+    const Card* m_cardsArray;
+    int m_numOfCards;
+    int m_currentCardIndex;
+    GameStatus m_gameStatus;
 };
 
 
