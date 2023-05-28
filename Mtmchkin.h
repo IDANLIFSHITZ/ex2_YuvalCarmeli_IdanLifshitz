@@ -1,8 +1,4 @@
-//
-// Created by Daniel_Meents on 07/04/2022.
-//
-
-#ifndef EX2_GAME_H
+    #ifndef EX2_GAME_H
 #define EX2_GAME_H
 #include "Card.h"
 #include <iostream>
