@@ -6,90 +6,103 @@
 #include "utilities.h"
 
 //c'tor with name, maxHP and strength
-Player::Player(const char* name, int maxHP, int strength) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
+Player::Player(std::string name, int maxHP, int strength) : m_level(1), m_maxHP(maxHP), m_currentHP(maxHP),
                                                                     m_strength(strength), m_coins(0), m_name(name)
                                                                     {
-    if (maxHP <= 0 || strength < 0) {
+    if (maxHP <= 0)
+    {
         m_currentHP = 100;
         m_maxHP = 100;
+    }
+    if (strength < 0)
+    {
         m_strength = 5;
     }
 }
 
-void Player::printInfo() const {
-    printPlayerInfo(m_name, m_level, m_currentHP, m_strength, m_coins);
+void Player::printInfo() const
+{
+    printPlayerInfo(m_name.c_str(), m_level, m_currentHP, m_strength, m_coins);
 }
 
-void Player::levelUp() {
-    if (m_level >= 10) {
-        return;
+void Player::levelUp()
+{
+    if (m_level < WIN_LEVEL)
+    {
+        m_level++;
     }
-    m_level++;
 }
 
-int Player::getLevel() const {
+int Player::getLevel() const
+{
     return m_level;
 }
 
-void Player::buff(int amount) {
-    assert(amount >= 0);
-
-    if (amount < 0) {
+void Player::buff(int amount)
+{
+    if (amount < 0)
+    {
         return;
     }
     m_strength += amount;
 }
-void Player::heal(int amount) {
-    assert(amount >= 0);
-    if(amount < 0){
+void Player::heal(int amount)
+{
+    if(amount < 0)
+    {
         return;
     }
-    if (m_currentHP + amount >= m_maxHP) {
+    if (m_currentHP + amount >= m_maxHP)
+    {
         m_currentHP = m_maxHP;
         return;
     }
     m_currentHP += amount;
 }
 
-void Player::damage(int amount) {
-    assert(amount >= 0);
-    if(amount < 0){
+void Player::damage(int amount)
+{
+    if(amount < 0)
+    {
         return;
     }
-    if (m_currentHP - amount <= 0) {
+    if (m_currentHP - amount <= 0)
+    {
         m_currentHP = 0;
         return;
     }
     m_currentHP -= amount;
 }
 
-bool Player::isKnockedOut() const {
-    if (m_currentHP == 0) {
+bool Player::isKnockedOut() const
+{
+    if (m_currentHP == 0)
+    {
         return true;
     }
     return false;
 }
 
-void Player::addCoins(int amount) {
-    assert(amount >= 0);
-    if(amount < 0){
+void Player::addCoins(int amount)
+{
+    if(amount < 0)
+    {
         return;
     }
     m_coins += amount;
 }
 
-bool Player::pay(int amount) {
-    assert(amount >= 0);
-    if(amount < 0){
-        return false;
-    }
-    if (m_coins - amount < 0) {
+bool Player::pay(int amount)
+{
+    if (m_coins - amount < 0 || amount < 0)
+    {
         return false;
     }
     m_coins -= amount;
     return true;
 }
 
-int Player::getAttackStrength() const {
+int Player::getAttackStrength() const
+{
     return m_strength + m_level;
 }

@@ -2,6 +2,8 @@
 // Created by yuval on 5/28/2023.
 //
 
+#include <string>
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -14,12 +16,13 @@ private:
     int m_currentHP; // between 0 and m_maxHP, included
     int m_strength; // non-negative integer
     int m_coins; // non-negative integer
-    const char* m_name; // english letters only with no spaces
+    std::string m_name; // english letters only with no spaces
 
 public:
+    static const int WIN_LEVEL = 10;
 
     //c'tors- default c'tor, c'tor with name, maxHP and strength
-    Player(const char* name, int maxHP = 100, int strength = 5);
+    Player(std::string name, int maxHP = 100, int strength = 5);
     Player() = default;
 
 

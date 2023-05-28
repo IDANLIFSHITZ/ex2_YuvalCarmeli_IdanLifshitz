@@ -16,11 +16,14 @@ void Card::applyEncounter(Player &player) const
             {
                 player.levelUp();
                 player.addCoins(m_stats.loot);
+                printBattleResult(true);
             }
             else
             {
                 player.damage(m_stats.hpLossOnDefeat);
+                printBattleResult(false);
             }
+
             break;
         case CardType::Buff:
             if (player.pay(m_stats.cost))

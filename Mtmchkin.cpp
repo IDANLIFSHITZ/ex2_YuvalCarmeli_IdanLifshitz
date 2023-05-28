@@ -5,11 +5,19 @@
 
 #define WIN_LEVEL 10
 
-Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName),
-                                                                                    m_numOfCards(numOfCards),
-                                                                                    m_currentCardIndex(numOfCards),
+Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_numOfCards(numOfCards),
+                                                                                    m_currentCardIndex(0),
                                                                                     m_gameStatus(GameStatus::MidGame)
                                                                                     {
+    if (playerName)
+    {
+        m_player = Player(std::string(playerName));
+    }
+    else
+    {
+        m_player = Player();
+    }
+
     m_cardsArray = new Card[numOfCards];
     for (int i = 0; i < numOfCards; ++i)
     {
@@ -49,32 +57,37 @@ Mtmchkin::~Mtmchkin() {
 
 void Mtmchkin::playNextCard()
 {
-    if (m_currentCardIndex == -1)
+    if (m_currentCardIndex == m_numOfCards)
     {
-        m_currentCardIndex = m_numOfCards;
+        m_currentCardIndex = 0;
     }
-    m_currentCardIndex--;
+
     m_cardsArray[m_currentCardIndex].printInfo();
     m_cardsArray[m_currentCardIndex].applyEncounter(m_player);
     m_player.printInfo();
+    m_currentCardIndex++;
 
+    if (m_player.getLevel() == WIN_LEVEL)
+    {
+        m_gameStatus = GameStatus::Win;
+    }
+    else if (m_player.isKnockedOut())
+    {
+        m_gameStatus = GameStatus::Loss;
+    }
 
 }
 
 bool Mtmchkin::isOver() const
 {
-    return (m_player.isKnockedOut() || m_player.getLevel() == WIN_LEVEL);
+    if (getGameStatus() != GameStatus::MidGame)
+    {
+        return true;
+    }
+    return false;
 }
 
 GameStatus Mtmchkin::getGameStatus() const
 {
-    if (m_player.isKnockedOut())
-    {
-        return  GameStatus::Loss;
-    }
-    else if (m_player.getLevel() == WIN_LEVEL)
-    {
-        return  GameStatus::Win;
-    }
-    return GameStatus::Loss;
+    return m_gameStatus;
 }

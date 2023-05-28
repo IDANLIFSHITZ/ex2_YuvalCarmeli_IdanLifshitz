@@ -14,4 +14,4 @@ add_executable(ex2_YuvalCarmeli_IdanLifshitz
         Player.h
         test.cpp
         utilities.cpp
-        utilities.h)
+        utilities.h fileTester.cpp)
