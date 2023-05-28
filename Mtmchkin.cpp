@@ -3,9 +3,11 @@
 //
 #include "Mtmchkin.h"
 
+#define WIN_LEVEL 10
+
 Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName),
                                                                                     m_numOfCards(numOfCards),
-                                                                                    m_currentCardIndex(0),
+                                                                                    m_currentCardIndex(numOfCards),
                                                                                     m_gameStatus(GameStatus::MidGame)
                                                                                     {
     m_cardsArray = new Card[numOfCards];
@@ -42,4 +44,37 @@ Mtmchkin& Mtmchkin::operator=(const Mtmchkin& other) {
 
 Mtmchkin::~Mtmchkin() {
     delete[] m_cardsArray;
+}
+
+
+void Mtmchkin::playNextCard()
+{
+    if (m_currentCardIndex == -1)
+    {
+        m_currentCardIndex = m_numOfCards;
+    }
+    m_currentCardIndex--;
+    m_cardsArray[m_currentCardIndex].printInfo();
+    m_cardsArray[m_currentCardIndex].applyEncounter(m_player);
+    m_player.printInfo();
+
+
+}
+
+bool Mtmchkin::isOver() const
+{
+    return (m_player.isKnockedOut() || m_player.getLevel() == WIN_LEVEL);
+}
+
+GameStatus Mtmchkin::getGameStatus() const
+{
+    if (m_player.isKnockedOut())
+    {
+        return  GameStatus::Loss;
+    }
+    else if (m_player.getLevel() == WIN_LEVEL)
+    {
+        return  GameStatus::Win;
+    }
+    return GameStatus::Loss;
 }
