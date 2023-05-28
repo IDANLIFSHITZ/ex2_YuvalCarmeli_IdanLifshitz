@@ -18,7 +18,7 @@ private:
 public:
 
     //c'tors- default c'tor, c'tor with name, maxHP and strength
-    Player(const char* name, int maxHP, int strength);
+    Player(const char* name, int maxHP = 100, int strength = 5);
     Player() = default;
 
     //the big three- default copy c'tor, default assignment operator, default d'tor
